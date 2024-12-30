@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "PandaBlog"
-  text: "About my job and life"
+  name: "XL Blog"
+  text: "about my job & life"
   tagline: My great project tagline
   actions:
     - theme: brand

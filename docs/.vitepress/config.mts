@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "PandaBlog",
-  description: "About my job and life",
+  title: "XL Blog",
+  description: "about my job & life",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
