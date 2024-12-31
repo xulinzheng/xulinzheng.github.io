@@ -14,9 +14,6 @@ hero:
   #     text: 生活
   #     link: /life-list
 
-  nav: [
-    { text: '工作', link: '/work-list' },
-    { text: '生活', link: '/life-list' },
-  ] 
+
 ---
 
