@@ -9,5 +9,10 @@
   },
   "devDependencies": {
     "vitepress": "^1.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "element-plus": "^2.9.2",
+    "vue-paginate": "^3.6.0"
   }
 }

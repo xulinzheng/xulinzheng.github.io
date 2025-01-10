@@ -1,35 +1,35 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
   themeConfig: {
-    // // https://vitepress.dev/reference/default-theme-config
-    // nav: [
-    //   { text: 'Home', link: '/' },
-    //   { text: 'Examples', link: '/markdown-examples' }
-    // ],
-
-    // sidebar: [
-    //   {
-    //     text: 'Examples',
-    //     items: [
-    //       { text: 'Markdown Examples', link: '/markdown-examples' },
-    //       { text: 'Runtime API Examples', link: '/api-examples' }
-    //     ]
-    //   }
-    // ],
-
+    logo: '/.vitepress/picture/logo.jpg',
+    // 页脚
+    sidebar: [
+      {
+        text: 'Guide',
+        items: [
+          { text: 'Introduction', link: '/introduction' },
+          { text: 'Getting Started', link: '/getting-started' },
+        ]
+      }
+    ],
+    // 社交
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/xulinzheng' }
-    ]
+      { icon: 'github', link: 'https://github.com/xulinzheng' },
+      { icon: 'x', link: 'https://x.com/ZXL767693432' },
+    ],
+    // 搜索框
+    search: {
+      provider: 'local'
+    }
   },
+
   locales: {
     root: {
       label: 'English',
       lang: 'en',
       link: '/en',
+      title: "XL's little house",
       themeConfig: {
         nav: [
           { text: 'zzzz', link: '/en' },
@@ -42,6 +42,7 @@ export default defineConfig({
       label: '中文',
       lang: 'zh',
       link: '/zh',
+      title: "XL的小屋",
       themeConfig: {
         nav: [
           { text: 'zzzz', link: '/zh' },
@@ -49,8 +50,6 @@ export default defineConfig({
           { text: '生活', link: '/zh/life-list' },
         ],
       }
-      // 其余 locale 特定属性...
     }
   }
-
 })

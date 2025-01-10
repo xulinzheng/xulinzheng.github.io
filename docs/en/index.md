@@ -14,4 +14,3 @@ hero:
       text: Life
       link: /life-list
 ---
-
