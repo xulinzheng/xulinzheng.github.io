@@ -1,69 +1,58 @@
 <template>
   <div class="article-list">
-    <ul>
-      <span class="head"> 美好的生活 </span>
-    </ul>
-    <!-- 文章列表 -->
-    <ul class="article-ul">
-      <li
-        v-for="article in displayedArticles"
-        :key="article.frontmatter.title"
-        class="article-item"
-      >
-        <a :href="article.url" class="article-link">
-          <span class="bullet">•</span> <!-- 圆点 -->
-          <span class="date">{{ article.frontmatter.formattedDate }}</span> <!-- 日期 -->
-          <span class="add">{{ "--" }}</span> <!-- 连接符 -->
-          <span class="title">{{ article.frontmatter.title }}</span> <!-- 标题 -->
-        </a>
-      </li>
-    </ul>
-
-    <!-- 分页组件 -->
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="articles.length"
-      :page-size="pageSize"
-      :current-page="currentPage"
-      @current-change="handlePageChange"
-    />
+    <!-- 按年份分组的文章列表 -->
+    <div v-for="(group, year) in groupedArticles" :key="year" class="year-group">
+      <h2 class="year-title">{{ year }}年</h2> <!-- 年份标题，格式化为 "2024年" -->
+      <ul class="article-ul">
+        <li
+          v-for="article in group"
+          :key="article.frontmatter.title"
+          class="article-item"
+        >
+          <a :href="article.url" class="article-link">
+            <span class="bullet">•</span> <!-- 圆点 -->
+            <span class="date">{{ article.frontmatter.formattedDate }}</span> <!-- 完整日期 -->
+            <span class="add">{{ "--" }}</span> <!-- 连接符 -->
+            <span class="title">{{ article.frontmatter.title }}</span> <!-- 标题 -->
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { ElPagination } from 'element-plus'; // 局部引入 Element Plus 组件
-import { data } from '../data/zh/life.data.js'; // 导入数据
+
+const props = defineProps({
+  src: String // 接收文件路径
+})
 
 // 初始化 articles
 const articles = ref([]);
 
-// 在组件挂载后加载数据
-onMounted(() => {
+onMounted(async () => {
   try {
-    console.log('加载后的数据:', data); // 打印加载后的数据
-    articles.value = data; // 直接使用 lifeData
+    const module = await import(/* @vite-ignore */ props.src)
+    articles.value = module.data
   } catch (error) {
-    console.error('加载数据失败:', error);
+    console.error('加载数据失败:', error)
   }
+})
+
+// 按年份分组文章
+const groupedArticles = computed(() => {
+  const groups = {};
+  articles.value.forEach((article) => {
+    const date = article.frontmatter.formattedDate; // 获取完整日期，例如 "2024/12/31"
+    const year = date.split('/')[0]; // 提取年份部分
+    if (!groups[year]) {
+      groups[year] = [];
+    }
+    groups[year].push(article);
+  });
+  return groups;
 });
-
-// 分页相关状态
-const pageSize = 10; // 每页显示的文章数量
-const currentPage = ref(1);
-
-// 计算当前页显示的文章
-const displayedArticles = computed(() => {
-  const start = (currentPage.value - 1) * pageSize;
-  const end = start + pageSize;
-  return articles.value.slice(start, end);
-});
-
-// 处理分页切换
-const handlePageChange = (page) => {
-  currentPage.value = page;
-};
 </script>
 
 <style scoped>
@@ -85,8 +74,19 @@ ul {
   text-align: center; /* 居中显示 */
 }
 
+.year-group {
+  margin-bottom: 20px; /* 每个年份组之间的间距 */
+}
+
+.year-title {
+  font-size: 24px;
+  color: #333; /* 年份标题颜色 */
+  margin-bottom: 10px; /* 年份标题与文章列表的间距 */
+  padding-bottom: 5px; /* 分隔线与文字的间距 */
+}
+
 .article-ul {
-  margin-top: 20px; /* 可选：设置文章列表的上边距 */
+  margin-top: 10px; /* 可选：设置文章列表的上边距 */
 }
 
 .article-item {

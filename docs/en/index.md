@@ -3,14 +3,11 @@
 layout: home
 
 hero:
+  image:
+    src: '/.vitepress/picture/logo.jpg'
+    alt: VitePress
+    width: 200
+    height: 200
   name: "XL Blog"
   text: "about my work & life"
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Work
-      link: /work-list
-    - theme: alt
-      text: Life
-      link: /life-list
 ---
