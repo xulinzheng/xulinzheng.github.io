@@ -2,4 +2,4 @@
 
 ---
 
-<ArticleList src="./data/zh/life.data.js" />
+<ArticleList src="../theme/data/zh/life.data.js" />

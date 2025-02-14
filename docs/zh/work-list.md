@@ -2,4 +2,4 @@
 
 ---
 
-<ArticleList src="./data/zh/work.data.js" />
+<ArticleList src="../theme/data/zh/work.data.js" />
