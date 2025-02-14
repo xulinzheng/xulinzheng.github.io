@@ -27,7 +27,6 @@ export default createContentLoader('/zh/life/*.md', {
           },
         };
       });
-
     return articles; // 直接返回 articles 数组
   }
 });

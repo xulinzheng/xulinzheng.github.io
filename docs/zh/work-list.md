@@ -1,5 +1,8 @@
 ---
 
 ---
+<script setup>
+import { data } from '/.vitepress/data/zh/work.data.js'
+</script>
 
-<ArticleList src="../theme/data/zh/work.data.js" />
+<ArticleList :articles="data" />

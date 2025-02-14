@@ -21,40 +21,28 @@
   </div>
 </template>
 
+
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
-  src: String // 接收文件路径
-})
-
-// 初始化 articles
-const articles = ref([]);
-
-onMounted(async () => {
-  try {
-    const fullPath = new URL(props.src, import.meta.url).href
-    const module = await import(/* @vite-ignore */ fullPath)
-    articles.value = module.data
-  } catch (error) {
-    console.error('加载数据失败:', error)
+  articles: {
+    type: Array,
+    required: true
   }
 })
 
-// 按年份分组文章
 const groupedArticles = computed(() => {
-  const groups = {};
-  articles.value.forEach((article) => {
-    const date = article.frontmatter.formattedDate; // 获取完整日期，例如 "2024/12/31"
-    const year = date.split('/')[0]; // 提取年份部分
-    if (!groups[year]) {
-      groups[year] = [];
-    }
-    groups[year].push(article);
-  });
-  return groups;
-});
+  const groups = {}
+  props.articles.forEach((article) => {
+    const year = article.frontmatter.formattedDate.split('/')[0]
+    groups[year] = groups[year] || []
+    groups[year].push(article)
+  })
+  return groups
+})
 </script>
+
 
 <style scoped>
 .article-list {
