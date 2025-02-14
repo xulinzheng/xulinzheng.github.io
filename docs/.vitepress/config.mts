@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  // base: '/docs/',
   themeConfig: {
-    logo: '/.vitepress/picture/logo.jpg',
+    logo: '/.vitepress/public/images/logo.jpg',
     // 页脚
     // sidebar: [
     //   {
@@ -21,7 +22,7 @@ export default defineConfig({
     // 搜索框
     search: {
       provider: 'local'
-    }
+    },
   },
 
   locales: {

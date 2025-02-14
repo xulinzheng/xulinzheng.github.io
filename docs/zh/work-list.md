@@ -2,4 +2,4 @@
 
 ---
 
-<ArticleList src="/.vitepress/data/zh/work.data.js" />
+<ArticleList src="/.vitepress/public/data/zh/work.data.js" />

@@ -4,8 +4,7 @@ layout: home
 
 hero:
   image:
-    src: '/.vitepress/picture/logo.jpg'
-    alt: VitePress
+    src: '/.vitepress/public/images/logo.jpg'
     width: 200
     height: 200
   name: "XL的小屋"

@@ -33,7 +33,8 @@ const articles = ref([]);
 
 onMounted(async () => {
   try {
-    const module = await import(/* @vite-ignore */ props.src)
+    const fullPath = new URL(props.src, import.meta.url).href
+    const module = await import(/* @vite-ignore */ fullPath)
     articles.value = module.data
   } catch (error) {
     console.error('加载数据失败:', error)
