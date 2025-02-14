@@ -1,9 +1,9 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  // base: '/docs/',
+  base: '/',
   themeConfig: {
-    logo: '/.vitepress/public/images/logo.jpg',
+    logo: '/images/logo.jpg',
     // 页脚
     // sidebar: [
     //   {
