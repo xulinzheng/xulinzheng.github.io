@@ -4,7 +4,7 @@ layout: home
 
 hero:
   image:
-    src: '/.vitepress/public/images/logo.jpg'
+    src: '/images/logo.jpg'
     width: 200
     height: 200
   name: "XL Blog"

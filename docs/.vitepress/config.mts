@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: '/',
   themeConfig: {
     logo: '/images/logo.jpg',
     // 页脚
